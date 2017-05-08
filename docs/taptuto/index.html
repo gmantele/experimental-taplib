@@ -1,0 +1,189 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		
+		<link href="css/jquery-ui-redmond.css" rel="stylesheet" type="text/css" />
+		<link href="css/prettify.css" rel="stylesheet" type="text/css" />
+		<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+		<link href="css/taptuto.css" rel="stylesheet" type="text/css" />
+		
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="js/prettify.js"></script>
+		<script type="text/javascript" src="js/lang-adql.js"></script>
+		<script type="text/javascript" src="js/lang-sql.js"></script>
+		<script type="text/javascript" src="js/lang-ini.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		
+		<script type="text/javascript">
+			// Function which close the closest (expected to be the parent) popover:
+			function hidePopover(button){
+				$(button).closest('.popover').popover('hide');
+				return false;
+			}
+
+			$(function(){
+				// Make the Sub-Navigation bar fixed on scroll:
+				var $win = $(window)
+				  , $nav = $('.subnav')
+				  , navTop = $('.subnav').length && $('.subnav').offset().top - 40
+				  , isFixed = 0
+
+				function processScroll() {
+				  var i, scrollTop = $win.scrollTop()
+				  if (scrollTop >= navTop && !isFixed) {
+					isFixed = 1
+					$nav.addClass('subnav-fixed')
+				  } else if (scrollTop <= navTop && isFixed) {
+					isFixed = 0
+					$nav.removeClass('subnav-fixed')
+				  }
+				}
+
+				processScroll()
+
+				$win.on('scroll', processScroll)
+
+				// Add a template for all popovers:
+				$('[data-toggle="popover"]').attr('data-template', "<div class='popover' role='tooltip'><div class='arrow'></div><h3 class='popover-title'></h3><a class='closeButton' href='#' onclick='return hidePopover(this);'><span class='glyphicon glyphicon-remove' aria-hidden='true'></span></a><div class='popover-content'></div></div>");
+
+				// Enable all popovers:
+				$('[data-toggle="popover"]').popover();
+			});
+		</script>
+		
+		<!--INCLUDES-->
+		
+		<title>TAP Library</title>
+	</head>
+	<body data-spy="scroll" data-target=".subnav" data-offset="140" data-rendering="true" onload="prettyPrint()">
+		<nav class="navbar navbar-fixed-top navbar-inverse">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#chaptersList">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<div class="navbar-brand dropdown" title="Show another library...">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							TAP Lib.
+							<b class="caret"></b>
+						</a>
+						<ul class="dropdown-menu">
+							<li><a href="/adqltuto" title="ADQL Library">ADQL Lib.</a></li>
+							<li><a href="/uwstuto" title="UWS Library">UWS Lib.</a></li>
+						</ul>
+					</div>
+				</div>
+				<div id="chaptersList" class="collapse navbar-collapse">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="index.html">Home</a></li>
+						<li class=""><a href="reminder.html">TAP Reminder</a></li>
+						<li class=""><a href="gettingstarted_index.html">Getting Started</a></li>
+						<li class="       dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation<b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li class=""><a href="docIndex.html">Overview</a></li>
+								<li class=""><a href="service.html">A. Service</a></li>
+								<li class="disabled "><a hre="database.html">B. Database &amp; ADQL - part 1</a></li>
+								<li class="disabled "><a hre="adql.html">B. Database &amp; ADQL - part 2</a></li>
+								<li class="disabled "><a hre="jobdescription.html">C. Job Description</a></li>
+								<li class="disabled "><a hre="queryexecution.html">D. Query Execution</a></li>
+								<li class=""><a href="configurationfile.html">E. TAP Configuration File</a></li>
+							</ul>
+						</li>
+						<li class=""><a href="javadoc/index.html">Javadoc</a></li>
+						<li class=""><a href="download.html">Download</a></li>
+						<li class=""><a href="news.html">What's new?</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		
+		<div class="container">
+			
+
+<!--CONTENT-->
+<div class="alert alert-warning">
+	<strong>WARNING:</strong>
+	This website is part of an experimental GitHub repository. You should not take
+	its content as a reference. It is just a way to temporarily experiment with
+	GitHub capabilities for the restructuration of the
+	<a href="https://github.com/gmantele/taplib">taplib</a> repository.<br/>
+	<strong>
+	Except this page and the Javadoc, the rest of this website does not exist. If
+	you were interested by the real content, lets rather check out
+	<a href="http://cdsportal.u-strasbg.fr/taptuto">TAP-tuto</a>.
+	</strong>
+</div>
+<header class="masthead">
+	<div class="inner">
+		<h1>TAP Library <small><em style="color: red">v2.0</em></small></h1>
+	</div>
+	<p>This Java library is a framework aiming to build quickly and easily a TAP service.</p>
+	<p>
+		<a role="button" class="btn btn-primary btn-lg" href="gettingstarted_index.html">Getting started !</a>
+		<a role="button" class="btn btn-default btn-lg" href="download.html">Download <span class="glyphicon glyphicon-save"></span></a>
+	</p>
+</header>
+
+<div class="row">
+	<div class="col-md-4">
+		<h2>What is TAP ?</h2>
+		<p>
+			<abbr title="Table Access Protocol">TAP</abbr> is a protocol defined by the <abbr title="International Virtual Observatory Alliance">IVOA</abbr> in the <a href="http://www.ivoa.net/Documents/TAP/20100327/REC-TAP-1.0.pdf">Recommendation of 27 March 2010 (Version 1.0)</a> which lets access table data.
+		</p>
+		<p>
+			<i>The standards <abbr title="Astronomical Data Query Language">ADQL</abbr> and <abbr title="Universal Worker Service protocol">UWS</abbr> are used in this protocol.</i>
+		</p>
+		<p style="text-align: center">
+			<a role="button" class="btn btn-primary" href="reminder.html">Remind me! <span class="glyphicon glyphicon-flash glyphicon-white"></span></a>
+		</p>
+	</div>
+	<div class="col-md-4">
+		<h2>Why this library?</h2>
+		<p>In order to help Java developpers to quickly build a TAP service with as less code writing as possible. A service built using this framework will be conform to the IVOA definition of the protocol TAP.</p>
+		<b>Functionalities:</b>
+		<ul>
+			<li><u>Configuration file:</u> a TAP service can be created with just a simple key-value configuration file...nothing else.
+			<li><u>Metadata management:</u> a TAP service let querying a database whose some tables and columns are accessible. All information (name, ucd, utype, type, description, ...) about them must be provided to the library. Easy ways (e.g. read file, database import) to give these information are provided by the library.</li>
+			<li><u>Home page:</u> a default home page with an HTML form is provided by this library for the root resource of the service. This home page can be changed.</li>
+			<li><u>Authentication:</u> thanks to a simple Java interface, the library let developers specify a way to identify a user. No default authentication method is provided.</li>
+			<li><u>Log:</u> all infos, warnings and errors are reported in a log. Log format is let free to the library users: it can be a file (free format), a database, a set of files, ...</li>
+			<li><u>Backup:</u> asynchronous jobs (query + result) of the resource <em>/async</em> are stored on the server. Thus they can be restored at service restart.</li>
+			<li><u>Upload:</u> VOTable(s) can be uploaded and crossmatched with the TAP service tables. This feature can disable by default.</li>
+		</ul>
+	</div>
+	<div class="col-md-4">
+		<h2>How to use it ?</h2>
+		<ul>
+            <li><a href="gettingstarted_index.html">Getting started</a>: to start with this library.</li>
+            <li><a href="migration1to2.html">Migration help</a>: to migrate from v1.0 to v2.0.</li>
+            <li><a href="docIndex.html">Documentation</a>: to have more details about all provided functionnalities.
+				<div class="alert alert-warning"><span class="glyphicon glyphicon-time"></span> The documentation is not yet complete. Content will be added piece by piece.</div></li>
+            <li><a href="javadoc/index.html">Javadoc</a>: Java documentation of all available classes.</li>
+            <li><a href="news.html">What's new ?</a>: Last modifications of the library.</li>
+        </ul>
+		<p>If you have any question about the TAP library, you can send it to <a href="mailto:gmantele@ari.uni-heidelberg.de?subject=[TAP Library]">Gr&eacute;gory Mantelet (ARI/ZAH)</a>.</p>
+		<p class="alert alert-info" style="background-image: url('img/lgplv3-88x31.png'); background-repeat: no-repeat; background-position: center left; padding-left: 90px;">
+			This library is free: you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License.
+		</p>
+	</div>
+</div>
+
+			<footer class="footer">
+				<div class="pull-right">
+					<a href="http://www.zah.uni-heidelberg.de/ari/"><img src="img/ari-logo.png" alt="ARI/ZAH Icon" title="Astronomisches Rechen-Institut" /></a>
+					<a href="http://cdsweb.u-strasbg.fr/"><img src="img/cds.png" alt="CDS Icon" title="Centre de Données astronomiques de Strasbourg" /></a>
+					<a href="http://www.ivoa.net/"><img src="img/ivoa.png" alt="IVOA Icon" title="International Virtual Observatory Alliance" /></a>
+				</div>
+				<p><b>Author: </b><a href="mailto:gmantele@ari.uni-heidelberg.de?subject=[TAP Library] ">Gr&eacute;gory Mantelet</a> 
+				(<a href="http://www.zah.uni-heidelberg.de/ari/"><acronym title="Astronomisches Rechen-Institut">ARI/ZAH</acronym></a>)</p> 
+				<p><b>Last modification: </b>08 May 2017</p>
+			</footer>
+		</div>
+	</body>
+</html>

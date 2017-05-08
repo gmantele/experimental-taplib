@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		
+		<link href="css/jquery-ui-redmond.css" rel="stylesheet" type="text/css" />
+		<link href="css/prettify.css" rel="stylesheet" type="text/css" />
+		<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+		<link href="css/adqltuto.css" rel="stylesheet" type="text/css" />
+		
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="js/prettify.js"></script>
+		<script type="text/javascript" src="js/lang-adql.js"></script>
+		<script type="text/javascript" src="js/lang-sql.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		
+		<script type="text/javascript">
+			// Function which close the closest (expected to be the parent) popover:
+			function hidePopover(button){
+				$(button).closest('.popover').popover('hide');
+				return false;
+			}
+
+			$(function(){
+				// Make the Sub-Navigation bar fixed on scroll:
+				var $win = $(window)
+				  , $nav = $('.subnav')
+				  , navTop = $('.subnav').length && $('.subnav').offset().top - 40
+				  , isFixed = 0
+
+				function processScroll() {
+				  var i, scrollTop = $win.scrollTop()
+				  if (scrollTop >= navTop && !isFixed) {
+					isFixed = 1
+					$nav.addClass('subnav-fixed')
+				  } else if (scrollTop <= navTop && isFixed) {
+					isFixed = 0
+					$nav.removeClass('subnav-fixed')
+				  }
+				}
+
+				processScroll()
+
+				$win.on('scroll', processScroll)
+			});
+		</script>
+		
+		<!--INCLUDES-->
+		
+		<title>ADQL Library</title>
+	</head>
+	<body data-spy="scroll" data-target=".subnav" data-offset="140" data-rendering="true" onload="prettyPrint()">
+		<nav class="navbar navbar-fixed-top navbar-inverse">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#chaptersList">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<div class="navbar-brand dropdown" title="Show another library...">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							ADQL Lib.
+							<b class="caret"></b>
+						</a>
+						<ul class="dropdown-menu">
+							<li><a href="/taptuto" title="TAP Library">TAP Lib.</a></li>
+							<li><a href="/uwstuto" title="UWS Library">UWS Lib.</a></li>
+						</ul>
+					</div>
+				</div>
+				<div id="chaptersList" class="collapse navbar-collapse">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="index.html">Home</a></li>
+						<li class=""><a href="gettingstarted.html">Getting started</a></li>
+						<li class="     dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation<b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li class=""><a href="docIndex.html">Overview</a></li>
+								<li class=""><a href="parser.html">A. Parser</a></li>
+								<li class=""><a href="treestructure.html">B. ADQL tree - part 1</a></li>
+								<li class=""><a href="treemanipulation.html">B. ADQL tree - part 2</a></li>
+								<li class=""><a href="translator.html">C. Translator</a></li>
+							</ul>
+						</li>
+						<li class=""><a href="javadoc/index.html">Javadoc</a></li>
+						<li class=""><a href="umlexplorer.html">UML</a></li>
+						<li class=""><a href="validator.html">ADQL Validator</a></li>
+						<li class=""><a href="download.html">Download</a></li>
+						<li class=""><a href="news.html">What's new?</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		
+		<div class="container">
+			
+
+<!--CONTENT-->
+<div class="alert alert-warning">
+	<strong>WARNING:</strong>
+	This website is part of an experimental GitHub repository. You should not take
+	its content as a reference. It is just a way to temporarily experiment with
+	GitHub capabilities for the restructuration of the
+	<a href="https://github.com/gmantele/taplib">taplib</a> repository.<br/>
+	<strong>
+	Except this page and the Javadoc, the rest of this website does not exist. If
+	you were interested by the real content, lets rather check out
+	<a href="http://cdsportal.u-strasbg.fr/adqltuto">ADQL-tuto</a>.
+	</strong>
+</div>
+<header class="masthead">
+	<div class="inner">
+		<h1>ADQL Library <small><em style="color: red;">v1.4</em></small></h1>
+	</div>
+	<p>This CDS/ARI library lets parsing, manipulating and translating ADQL queries.</p>
+	<p>
+		<a role="button" class="btn btn-primary btn-lg" href="gettingstarted.html">Getting started!</a>
+		<a role="button" class="btn btn-default btn-lg" href="download.html">Download <span class="glyphicon glyphicon-save"></span></a>
+	</p>
+</header>
+
+<div class="row">
+	<div class="col-md-4">
+		<h2>What is ADQL ?</h2>
+		<p>
+			<abbr title="Astronomical Data Query Language">ADQL</abbr> is a SQL-like language which includes astronomical facilities to query a database. This language has been defined by the <abbr title="International Virtual Observatory Alliance">IVOA</abbr> in the <a href="http://www.ivoa.net/Documents/REC/ADQL/ADQL-20081030.pdf"> Recommendation of 30 Oct 2008 (Version 2.0)</a> and is mainly used in the Table Access Protocol (TAP).
+		</p>
+	</div>
+	<div class="col-md-4">
+		<h2>Why this library ?</h2>
+		<p>In order to help Java developpers to parse, manipulate and translate ADQL queries quickly and with as few lines of code as possible.</p>
+		<b>Functionalities:</b>
+		<ul>
+			<li><u>Parse:</u> read ADQL queries in text and transform them into a Java object (actually, a syntactic tree).</li>
+			<li><u>Manipulate:</u> the generated object can be manipulated so than modifying the original query.</li>
+			<li><u>Translate:</u> an interface and some implementations lets translating SQL into other languages like SQL.</li>
+		</ul>
+		<p style="text-align: center">
+			<a role="button" class="btn btn-primary" href="validator.html">Validator/Demo <span class="glyphicon glyphicon-play-circle glyphicon-white"></span></a>
+		</p>
+	</div>
+	<div class="col-md-4">
+		<h2>How to use it ?</h2>
+		<ul>
+			<li><a href="gettingstarted.html">Getting started</a>: to start with this library.</li>
+			<li><a href="docIndex.html">Documentation</a>: to have more details about all provided functionnalities.</li>
+			<li><a href="umlexplorer">UML</a>: UML diagrams of all available classes.</li>
+			<li><a href="javadoc/index.html">Javadoc</a>: Java documentation of all available classes.</li>
+			<li><a href="news.html">What's new ?</a>: Last modifications of the library.</li>
+		</ul>
+		<p>If you have any question about the ADQL library, you can send it to <a href="mailto:gmantele@ari.uni-heidelberg.de?subject=[ADQL Library]">Gr&eacute;gory Mantelet (ARI/ZAH)</a>.</p>
+		<p class="alert alert-info" style="background-image: url('img/lgplv3-88x31.png'); background-repeat: no-repeat; background-position: center left; padding-left: 90px;">
+			This library is free: you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License.
+		</p>
+	</div>
+</div>
+
+			<footer class="footer">
+				<div class="pull-right">
+					<a href="http://www.zah.uni-heidelberg.de/ari/"><img src="img/ari-logo.png" alt="ARI/ZAH Icon" title="Astronomisches Rechen-Institut" /></a>
+					<a href="http://cdsweb.u-strasbg.fr/"><img src="img/cds.png" alt="CDS Icon" title="Centre de Données astronomiques de Strasbourg" /></a>
+					<a href="http://www.ivoa.net/"><img src="img/ivoa.png" alt="IVOA Icon" title="International Virtual Observatory Alliance" /></a>
+				</div>
+				<p><b>Author: </b><a href="mailto:gmantele@ari.uni-heidelberg.de?subject=[ADQL Library] ">Gr&eacute;gory Mantelet</a>
+				(<a href="http://www.zah.uni-heidelberg.de/ari/"><acronym title="Astronomisches Rechen-Institut">ARI/ZAH</acronym></a>)</p> 
+				<p><b>Last modification: </b>08 May 2017</p>
+			</footer>
+		</div>
+	</body>
+</html>
