@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/gmantele/experimental-taplib.svg?branch=master)](https://travis-ci.org/gmantele/experimental-taplib)
+[![License: LGPL v3](https://img.shields.io/badge/License-LGPL%20v3-blue.svg)](http://www.gnu.org/licenses/lgpl-3.0)
 
 **WARNING: This repository is just an EXPERIMENTAL GitHub repository. For the
 real UWS-/ADQL-/TAP-Libraries, you should visit the
