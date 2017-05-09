@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.util.GregorianCalendar;
 
 import org.junit.AfterClass;
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -18,6 +19,7 @@ import adql.query.ADQLQuery;
 import adql.translator.AstroH2Translator;
 import tap.db_testtools.DBTools;
 import tap.metadata.TAPColumn;
+import uws.ISO8601Format;
 
 public class TestResultSetTableIterator {
 
