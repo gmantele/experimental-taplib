@@ -1,0 +1,5 @@
+include 'adql:adqllib', 'adql:extensions:pgsphere'
+
+include 'uws:uwslib'
+
+include 'tap:taplib'
