@@ -23,16 +23,35 @@ public class TestResultSetTableIterator {
 
 	private static Connection conn;
 
+	private static boolean displayMS;
+	private static boolean displayTZ;
+	private static String targetTZ = null;
+
+	@Before
+	public void setUp() throws Exception{
+		ISO8601Format.displayMilliseconds = false;
+		ISO8601Format.displayTimeZone = true;
+		ISO8601Format.targetTimeZone = "Europe/Berlin";
+	}
+
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception{
 		DBTools.createTestDB();
 		conn = DBTools.createConnection("h2", null, null, DBTools.DB_TEST_PATH, DBTools.DB_TEST_USER, DBTools.DB_TEST_PWD);
+
+		displayMS = ISO8601Format.displayMilliseconds;
+		displayTZ = ISO8601Format.displayTimeZone;
+		targetTZ = ISO8601Format.targetTimeZone;
 	}
 
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception{
 		DBTools.closeConnection(conn);
 		DBTools.dropTestDB();
+
+		ISO8601Format.displayMilliseconds = displayMS;
+		ISO8601Format.displayTimeZone = displayTZ;
+		ISO8601Format.targetTimeZone = targetTZ;
 	}
 
 	@Test
