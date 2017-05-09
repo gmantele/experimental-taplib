@@ -7,6 +7,7 @@ import static org.junit.Assert.fail;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.GregorianCalendar;
+import java.util.TimeZone;
 
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -169,6 +170,7 @@ public class TestResultSetTableIterator {
 
 			// Set a date-time:
 			GregorianCalendar cal = new GregorianCalendar();
+			cal.setTimeZone(TimeZone.getTimeZone("Europe/Berlin"));
 			cal.set(2017, GregorianCalendar.FEBRUARY, 1, 15, 13, 56); // 1st Feb. 2017 - 15:13:56 CET
 
 			// Try to format it from a java.SQL.Timestamp into a ISO8601 date-time:
