@@ -48,11 +48,7 @@ modifications) on this repository and thus made available to everybody.
 Repository content
 ------------------
 
-* `docs/` : website containing the textual documentation of the three libraries
-            in addition of their Javadoc.
-  * `adqltuto/` : documentation website for ADQLLib
-  * `uwstuto/` : documentation website for UWSLib
-  * `taptuto/` : documentation website for TAPLib
+### Branch `master`
 
 * `adql/` : directory gathering the core of ADQLLib and its official extensions
   * `adqllib/` : _subproject_ containing the sources and test files for ADQLLib.
@@ -68,3 +64,13 @@ Repository content
   * `taplib/` : _subproject_ containing the sources and test files for TAPLib.
   * `extensions/` : directory gathering all extensions of TAPLib
                     (e.g. `moc`).
+
+
+### Branch `gh-pages`
+
+* Website containing the textual documentation of the three libraries
+  in addition of their Javadoc.
+  * `adqltuto/` : documentation website for ADQLLib
+  * `uwstuto/` : documentation website for UWSLib
+  * `taptuto/` : documentation website for TAPLib
+
